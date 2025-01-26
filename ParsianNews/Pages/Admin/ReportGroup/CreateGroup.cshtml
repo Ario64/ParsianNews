@@ -1,0 +1,62 @@
+﻿@page
+@model ParsianNews.Pages.Admin.ReportGroup.CreateGroupModel
+
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "ایجاد گروه جدید";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="ReportGroup!.GroupName" class="control-label"></label>
+                <input asp-for="ReportGroup!.GroupName" class="form-control" />
+                <span asp-validation-for="ReportGroup!.GroupName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReportGroup!.GroupImage" class="control-label"></label>
+                <input type="file" name="imgUp" id="imgUpload" class="form-control" />
+                <span asp-validation-for="ReportGroup!.GroupImage" class="text-danger"></span>
+            </div>
+            <hr />
+            <img id="imgpreview" class="thumbnail" />
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">بازگشت به لیست</a>
+</div>
+
+@section Scripts
+{
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgpreview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgUpload").change(function () {
+            readURL(this);
+        });
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿@page
+@model ParsianNews.Pages.Admin.ReportGroup.IndexModel
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "گروه های خبری";
+}
+<hr />
+<p>
+    <a asp-page="CreateGroup" class="btn btn-success">افزودن گروه خبری</a>
+</p>
+<hr />
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ReportGroups![0].GroupImage)</th>
+            <th>@Html.DisplayNameFor(model => model.ReportGroups![1].GroupName)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var group in Model.ReportGroups!)
+        {
+            <tr>
+                <td>
+                    <img src="/GroupImages/@Html.DisplayFor(model => group.GroupImage)" alt="@group.GroupImage" style="max-width:120px" class="img-thumnail" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => group.GroupName)</td>
+                <td>
+                    <a asp-page="EditGroup" asp-route-id="@group.GroupId" class="btn btn-sm btn-warning">ویرایش</a>
+                    <a asp-page="DeleteGroup" asp-route-id="@group.GroupId" class="btn btn-sm btn-danger">حذف</a>
+                    <a asp-page="GroupDetails" asp-route-id="@group.GroupId" class="btn btn-sm btn-primary">جزییات</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

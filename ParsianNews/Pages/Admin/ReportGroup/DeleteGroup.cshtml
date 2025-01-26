@@ -1,0 +1,39 @@
+﻿@page
+@model ParsianNews.Pages.Admin.ReportGroup.DeleteGroupModel
+
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "حذف گروه" + " " + Model.ReportGroup!.GroupName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h3>آیا از حذف گروه @Model.ReportGroup.GroupName اطمینان دارید؟</h3>
+
+<div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ReportGroup!.GroupImage)</th>
+                <th>@Html.DisplayNameFor(model => model.ReportGroup!.GroupName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="/GroupImages/@Html.DisplayFor(model => Model.ReportGroup.GroupImage)" alt="Model.ReportGroup.GroupImage" style="max-width:250px" class="img-thumnail" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => Model.ReportGroup.GroupName)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <form method="post">
+        <input type="hidden" asp-for="ReportGroup!.GroupId"/>
+        <input type="submit" value="حذف" class="btn btn-sm btn-danger"/> |
+        <a asp-page="./Index" class="btn btn-sm btn-default">بازگشت به لیست</a>
+    </form>
+</div>

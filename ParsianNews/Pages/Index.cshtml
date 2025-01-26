@@ -1,0 +1,734 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "صفحه اصلی";
+}
+
+<main>
+    <!--Start container -->
+    <div class="container">
+        <div class="row" style="margin-top: 50px;">
+            <!-- Start Col-9 -->
+            <div class=" col-12 col-lg-9">
+                <!-- Start Hashtag -->
+                <div class="row m-0 my-4 Hashtag">
+                    <ul class="bg-body-tertiary shadow py-3 ">
+                        <li class="btn btn-info btn-sm mb-1"> <i class="fa fa-hashtag"> # </i></li>
+                        <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> طوفان الاقصی </a> </li>
+                        <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> انتخابات مجلس شورای اسلامی </a> </li>
+                        <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> فوتبال </a> </li>
+                        <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> ریاست جمهوری </a> </li>
+                        <li class="btn btn-info btn-sm mb-1"> <span> # </span> <a class="text-decoration-none"> سلامت روان </a> </li>
+                    </ul>
+                </div>
+                <!-- End Hashtag -->
+                <!-- Strat Hot News -->
+                <div class="container shadow bg-body-tertiary rounded mb-4">
+                    <div class="row">
+                        <!-- Start Hot News Line -->
+                        <div class="box mb-3">
+                            <h6 class="position-relative ">
+                                <span class="HotNews-Line-Color position-relative bg-body-tertiary"> خط داغ </span>
+                                <a class="more-report bg-body-tertiary"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+                            </h6>
+                        </div>
+                        <!-- End Hot News Line -->
+                        <!-- Strat Hot News First -->
+                        <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+
+                            <div class="row HotNewsFirst">
+                                <a>
+                                    <img src="/Assets/Img/ReportImages/ee5abd41-8ea7-4559-88f0-2ef16a141b2f.jpg" class="my-2 hotnews-img-index" alt="...">
+                                </a>
+
+                                <span class="pb-3 mx-2"><a> ماجرای قهر و آشتی‌ها در صداو سیما/ زندگی شیرین می‌شود؟ </a></span>
+                            </div>
+
+                        </div>
+                        <!-- End Hot News First -->
+                        <!-- Strat Hot News -->
+                        <div class="col-lg-6 col-sm-12">
+                            <ul class="HotNews ps-0">
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> سکوهای ورزشگاه آزادی آذرماه آماده می‌شود  <i class="fa fa-film"></i> </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  تصاویری از بازیگوشی خانواده جدید پلنگ ایرانی در پارک ملی تندوره  <i class="fa fa-film"></i> </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  ضایعات غذا در کشور بیش از ۲.۵ برابر اتحادیه اروپا/ "نان، برنج و میوه" بیشترین دور... </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  توصیه‌های طب سنتی برای کاهش "استرس و اضطراب" + اینفوگرافیک </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  اجرای فاز آزمایشی سامانه هشدار سریع زلزله در تهران/ کدام دستگاه‌ها باید به سام... </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> خواص باورنکردنی «دانه چیا» را بشناسید </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none">  حذف بند بیمه خدمات سلامت روان از برنامه هفتم توسعه </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> دستاورد‌های موسسه رازی در نشست تولیدکنندگان واکسن </a></li>
+                                <li class="border-bottom py-2"><a class="list-unstyled text-decoration-none"> چرا خوردن صبحانه برای دانش‌آموزان بسیار مهم است؟ </a></li>
+                            </ul>
+                        </div>
+                        <!-- End Hot News -->
+                    </div>
+                </div>
+                <!-- End Hot News -->
+                <!-- Start Sport -->
+                @await Component.InvokeAsync("SportReportsComponent")
+                <!-- End Sport -->
+                <!-- Start Technology  -->
+                @await Component.InvokeAsync("TechnologyReportsComponent")
+                <!-- End Technology -->
+                <!-- Start Health -->
+                @await Component.InvokeAsync("HealthReportsComponent")
+                <!-- End Health -->
+                <!-- Start Multi Media -->
+                <script type="text/javascript">
+                    $(document).ready(function (e) {
+                        $('.flexslider').flexslider({
+
+                            animation: "slide",
+                            fadeFirstSlide: true,
+                            pauseOnHover: true
+
+                        });
+                    });
+                </script>
+                <!-- Start Multi Media Line -->
+                <div class="box">
+                    <h6 class="position-relative ">
+                        <span class="MultiMedia-Line-Color position-relative bg-body"> چند رسانه ای </span>
+                        <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+                    </h6>
+                </div>
+                <!-- End Multi Media Line -->
+                <!-- Start Multi Media -->
+                <!-- <div class="container shadow bg-body-tertiary rounded mb-4 flexslider">
+                    <div class="row">
+                        <div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+                            <ul class="slides">
+                                <li style="position:relative; height:250px;">
+                                    <video src="/Assets/Img/ReportImages/5e41a2a6-27e8-465b-a6f0-5da08c7e026e.mp4" controls allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" style="width:50%; height:100%;"  class=" "></video>
+                                    <a asp-page="./Report" class="flex-caption" style="position:absolute; text-decoration:none;">
+
+                                        <b style="color: black; font-size: .8rem; ">سکوهای ورزشگاه آزادی آذرماه آماده می‌شود</b>
+                                        <br>
+                                        <p style="color:darkblue; margin: 10px 10px; height: 80%; overflow:hidden;">سرپرست شرکت توسعه و تجهیز اماکن ورزشی گفت: هواداران می‌توانند در هفته‌های آینده به ورزشگاه آزادی بیایند اما سکوها آذرماه، به‌طور کامل آماده می‌شود.</p>
+                                        <p style="color:darkblue; margin: 10px 10px; font-size: 0.6rem; position:absolute; color:#b9b9bb; top:84%; left: 10%;"> <i class="fa fa-clock"></i>  یکشنبه ۱۴ آبان ۱۴۰۲  </p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- End Multi Media -->
+                <!-- End Multi Media -->
+                <!-- Start NavTabs -->
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item  navtab-index" role="presentation">
+                        <button class="nav-link active" id="Social-tab" data-bs-toggle="tab" data-bs-target="#Social-tab-pane" type="button" role="tab" aria-controls="Social-tab-pane" aria-selected="true"> اجتماعی </button>
+                    </li>
+                    <li class="nav-item navtab-index" role="presentation">
+                        <button class="nav-link" id="Cultural-tab" data-bs-toggle="tab" data-bs-target="#Cultural-tab-pane" type="button" role="tab" aria-controls="Cultural-tab-pane" aria-selected="false"> فرهنگی </button>
+                    </li>
+                    <li class="nav-item navtab-index" role="presentation">
+                        <button class="nav-link " id="Political-tab" data-bs-toggle="tab" data-bs-target="#Political-tab-pane" type="button" role="tab" aria-controls="Political-tab-pane" aria-selected="false"> سیاسی </button>
+                    </li>
+                    <li class="nav-item navtab-index" role="presentation">
+                        <button class="nav-link" id="Artistic-tab" data-bs-toggle="tab" data-bs-target="#Artistic-tab-pane" type="button" role="tab" aria-controls="Artistic-tab-pane" aria-selected="false"> هنری </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <!-- Start اجتماعی -->
+                    @await Component.InvokeAsync("NavTabSocialReportsComponent")
+                    <!-- End اجتماعی -->
+                    <!-- Start فرهنگی -->
+                    @await Component.InvokeAsync("NavTabCulturalReportsComponent")
+                    <!-- End فرهنگی -->
+                    <!-- Start سیاسی -->
+                    <div class="tab-pane fade" id="Political-tab-pane" role="tabpanel" aria-labelledby="Political-tab" tabindex="0">
+                        <div class="my-2 body-text-NavTab">
+                            <a class="text-decoration-none text-NavTab"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+                        </div>
+                        <div class="card-group mb-3 list-group-unbordered">
+                            <!-- card 1 -->
+                            <div class="card p-2 border-secondary">
+                                <a><img src="/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
+                                <div class="card-body">
+                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> امیرعبداللهیان: در صورت ادامه جنایات رژیم صهیونیستی، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند </p></a>
+                                    <p class="card-text" style="margin-bottom: 2rem;">
+                                        وزیر امور خارجه در دیدار با همتای قطری در دوحه گفت: در صورت ادامه جنایات رژیم صهیونیستی علیه مردم و شهروندان فلسطین، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند.
+                                    </p>
+                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> یکشنبه ۲۳ مهر ۱۴۰۲ </small></p>
+                                </div>
+                            </div>
+                            <!-- card 2 -->
+                            <div class="card p-2 border-secondary">
+                                <a><img src="/Assets/Img/ReportImages/bb5179a2-f108-4fd2-8970-4fa0f75be148.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
+                                <div class="card-body">
+                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> مدیریت واحدی در روستاها وجود ندارد/ در برنامه هفتم تدبیر شود </p></a>
+                                    <p class="card-text" style="margin-bottom: 2rem;">
+                                        رییس مجلس شورای اسلامی گفت: روستاها الان صاحب و متولی مشخصی ندارند که باید در برنامه هفتم توسعه برای رفع این مساله تدبیر شود.
+                                    </p>
+                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> یکشنبه ۲۳ مهر ۱۴۰۲ </small></p>
+                                </div>
+                            </div>
+                            <!-- card 3 -->
+                            <div class="card p-2 border-secondary">
+                                <a><img src="/Assets/Img/ReportImages/9a41f08f-b2d3-40e8-aebd-d1799b2bd100.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
+                                <div class="card-body">
+                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> هیچ راهکاری بدون توجه به حقوق فلسطینیان نمی‌تواند مشکل فلسطین را حل کند </p></a>
+                                    <p class="card-text" style="margin-bottom: 2rem;">
+                                        رئیس جمهور با بیان اینکه تحولات اخیر نشان داد که هیچ راهکاری بدون توجه به حقوق مردم فلسطین نمی‌تواند این مشکل را حل و فصل کند، خاطرنشان کرد: تردیدی نیست که جنایات اخیر صهیونیست‌ها با چراغ سبز حامیان این رژیم انجام می‌شود، اما این اقدامات نه تنها آنها را به اهداف‌شان نمی‌رساند، بلکه باعث گسترش و تشدید ناامنی در منطقه و جهان خواهد شد.
+                                    </p>
+                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> جمعه ۲۱ مهر ۱۴۰۲ </small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End سیاسی -->
+                    <!-- start هنری -->
+                    @await Component.InvokeAsync("NavTabArtisticReportsComponent")
+                    <!-- End هنری -->
+                </div>
+                <!-- End NavTabs -->
+                <!-- Start TopReports Line -->
+                <div class="box">
+                    <h6 class="position-relative ">
+                        <span class="TopReports-Line-Color position-relative bg-body"> محبوب ترین اخبار </span>
+                    </h6>
+                </div>
+                <!-- End TopReports Line -->
+                <!-- Start TopReports -->
+                <div class="TopReports-row">
+                    <!-- card 1 -->
+                    <div class="TopReports-col-1-of-3">
+                        <div class="TopReports-card">
+                            <div class="TopReports-card__side TopReports-card__side--front-1">
+                                <img src="/Assets/Img/ReportImages/44753b0a-b268-458a-b7b9-f3587b24973b.jpg" class="w-100 h-100" />
+                            </div>
+                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
+                                <div class="TopReports-card__side__back-1__body">
+                                    <p class="TopReports-card__price-only">
+                                        صعود امیدهای ایران به یک چهارم نهایی با هدیه‌های تایلندی
+                                    </p>
+                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 2 -->
+                    <div class="TopReports-col-1-of-3">
+                        <div class="TopReports-card">
+                            <div class="TopReports-card__side TopReports-card__side--front-1">
+                                <img src="/Assets/Img/ReportImages/7fecf5b4-6482-4ad0-afdc-7390d669c099.jpg" class="w-100 h-100" />
+                            </div>
+                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
+                                <div class="TopReports-card__side__back-1__body">
+                                    <p class="TopReports-card__price-only">
+                                        عضو اتاق بازرگانی ایران: فرزین با اجرای سیاست تثبیت موفق عمل کرده است
+                                    </p>
+                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 3 -->
+                    <div class="TopReports-col-1-of-3">
+                        <div class="TopReports-card">
+                            <div class="TopReports-card__side TopReports-card__side--front-1">
+                                <img src="/Assets/Img/ReportImages/182bdc16-e258-4d06-9e2b-fb8d2ccabe76.jpg" class="w-100 h-100" />
+                            </div>
+                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
+                                <div class="TopReports-card__side__back-1__body">
+                                    <p class="TopReports-card__price-only">
+                                        خواص باورنکردنی «دانه چیا» را بشناسید
+                                    </p>
+                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- card 4 -->
+                    <div class="TopReports-col-1-of-3">
+                        <div class="TopReports-card">
+                            <div class="TopReports-card__side TopReports-card__side--front-1">
+                                <img src="/Assets/Img/ReportImages/acd55981-6c23-4c03-a103-188fbb52b1d4.jpg" class="w-100 h-100" />
+                            </div>
+                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
+                                <div class="TopReports-card__side__back-1__body">
+                                    <p class="TopReports-card__price-only">
+                                        صعود سومین ووشوکار ایران به فینال بازی‌های آسیایی
+                                    </p>
+                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- End TopReports -->
+                <!-- Start SpecialReports -->
+                <div class="mb-5">
+                    <!-- Start SpecialReports Line -->
+                    <div class="box">
+                        <h6 class="position-relative ">
+                            <span class="Special-Line-Color position-relative bg-body"> ویژه خبری </span>
+                            <a class="more-report bg-body"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+                        </h6>
+                    </div>
+                    <!-- End SpecialReports Line -->
+                    <!-- Card First -->
+                    <div class="col-12 col-md-4 mb-4 mt-2 body-plusfirst">
+                        <div class="shadow rounded">
+                            <div class="card overflow-hidden">
+                                <div class="">
+                                    <a>
+                                        <img src="/Assets/Img/ReportImages/99cc52bb-fc5e-479d-9ea7-97a2f3aea5e2.jpg" class="card-img-top w-100 card-img-plusfirst" alt="...">
+                                    </a>
+                                </div>
+                                <div class="card-body bg-body-secondary overflow-hidden p-2 w-100 card-body-plusfirst">
+                                    <a class="card-text-plusfirst">
+                                        <p class="card-text">
+                                            نهمین روز «طوفان الاقصی»| تداوم نسل کشی در غزه/ گفت‌وگوی نتانیاهو برای پنجمین بار با بایدن / پیام غزه برای متجاوزان صهیونیست
+                                        </p>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="list-unstyled">
+                        <!-- Card 1 -->
+                        <li class="col-12 col-md-4 d-inline-flex ps-md-3 mb-2 body-plus">
+                            <div class="card shadow w-100">
+                                <div class="row g-0 ">
+                                    <div class="col-12 col-md-4">
+                                        <a>
+                                            <img src="/Assets/Img/ReportImages/7fecf5b4-6482-4ad0-afdc-7390d669c099.jpg" class="img-fluid rounded-start w-100" style="height: 112px;" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
+                                        <p>
+                                            <a class="body-text-plus">
+                                                عضو اتاق بازرگانی ایران: فرزین با اجرای سیاست تثبیت موفق عمل کرده است
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Card 2 -->
+                        <li class="col-12 col-md-4 d-inline-flex ps-md-3 mb-2 body-plus">
+                            <div class="card shadow w-100">
+                                <div class="row g-0 ">
+                                    <div class="col-12 col-md-4">
+                                        <a>
+                                            <img src="/Assets/Img/ReportImages/c63292df-48f3-489f-ab04-3f3558a62802.jpg" class="img-fluid rounded-start w-100" style="height: 112px;" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
+                                        <p>
+                                            <a class="body-text-plus">
+                                                حقیقت‌هایی درباره شهرک سینمایی دفاع مقدس/ فیلمسازان از هزینه‌های خرید و نگهداری تجهیزات شهرک اطلاعی ندارند
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Card 3 -->
+                        <li class="col-12 col-md-4 d-inline-flex ps-md-3 mb-2 body-plus">
+                            <div class="card shadow w-100">
+                                <div class="row g-0 ">
+                                    <div class="col-12 col-md-4">
+                                        <a>
+                                            <img src="/Assets/Img/ReportImages/c2392af3-c7ec-44c3-adc3-056be62ed564.jpg" class="img-fluid rounded-start w-100" style="height: 112px;" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
+                                        <p>
+                                            <a class="body-text-plus">
+                                                آغاز تظاهرات مرزی فلسطینیان در شرق غزه/ ارسال بالن‌های آتش‌زا به سمت شهرک‌های صهونیست‌نشین
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <!-- Card 4 -->
+                        <li class="col-12 col-md-4 d-inline-flex ps-md-3 mb-5 body-plus">
+                            <div class="card shadow w-100">
+                                <div class="row g-0 ">
+                                    <div class="col-12 col-md-4">
+                                        <a>
+                                            <img src="/Assets/Img/ReportImages/48a057bb-0509-47ce-bd01-cd8e1fd2ac30.jpg" class="img-fluid rounded-start w-100" style="height: 112px;" alt="...">
+                                        </a>
+                                    </div>
+                                    <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
+                                        <p>
+                                            <a class="body-text-plus">
+                                                اختصاص تسهیلات بانکی برای پروژه‌های سینمایی
+                                            </a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <!-- End SpecialReports -->
+                <!--Start LastNews Hide -->
+                <div class="col-12 d-lg-none row my-5">
+                    <div class="bg-body-secondary rounded shadow position-relative LastNews-body">
+                        <div class="position-absolute bg-body-secondary px-3 pt-2 LastNews-text">آخرین اخبار</div>
+                        <ul class="list-unstyled mt-3">
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        ماجرای قهر و آشتی‌ها در صداوسیما/ زندگی شیرین می‌شود
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-video"></i>
+                                        سکوهای ورزشگاه آزادی آذرماه آماده می‌شود
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-video"></i>
+                                        تصاویری از بازیگوشی خانواده جدید پلنگ ایرانی در پارک ملی تندوره
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        ضایعات غذا در کشور بیش از ۲.۵ برابر اتحادیه اروپا/ "نان، برنج و میوه" بیشترین دورریز غذایی ایرانی‌ها
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        توصیه‌های طب سنتی برای کاهش "استرس و اضطراب" + اینفوگرافیک
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        اجرای فاز آزمایشی سامانه هشدار سریع زلزله در تهران/ کدام دستگاه‌ها باید به سامانه متصل شوند؟
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        خواص باورنکردنی «دانه چیا» را بشناسید
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        حذف بند بیمه خدمات سلامت روان از برنامه هفتم توسعه
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        دستاورد‌های موسسه رازی در نشست تولیدکنندگان واکسن
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        چرا خوردن صبحانه برای دانش‌آموزان بسیار مهم است؟
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        عرضه خودروهای وارداتی در سامانه یکپارچه از فردا آغاز می‌شود
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        واکنش «رئیس‌ کل بانک مرکزی قطر» به ادعای «مسدود کردن دوباره ۶ میلیارد دلار ایران در قطر»
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        امیرعبداللهیان: در صورت ادامه جنایات رژیم صهیونیستی، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="border-bottom py-2">
+                                <a class="text-decoration-none">
+                                    <p class="LastNews-items">
+                                        <i class="fa fa-newspaper"></i>
+                                        نهمین روز «طوفان الاقصی»| تداوم نسل کشی در غزه/ گفت‌وگوی نتانیاهو برای پنجمین بار با بایدن / پیام غزه برای متجاوزان صهیونیست
+                                    </p>
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="text-center p-3">
+                            <a class="btn btn-secondary w-100">آخــرین اخبـــار ...</a>
+                        </div>
+                    </div>
+                </div>
+                <!--End LastNews Hide -->
+                <!-- Start Ad Hide -->
+                <div class="col-12 d-lg-none row mb-5">
+                    <div class="bg-body-secondary shadow Ads">
+                        <ul class="list-unstyled my-2 ">
+                            <!-- Ads 1 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/ab0df50b-6240-4e1d-96e3-1666e2db889d.gif"></a></li>
+                            <!-- Ads 2 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/7d35ea74-ef43-4989-8de7-8503663b0999.gif"></a></li>
+                            <!-- Ads 3 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/e78606fd-718e-4f72-a767-2040c026a3d5.gif"></a></li>
+                            <!-- Ads 4 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/2657e694-1364-41b8-8d75-5a302e43b03e.gif"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Ad Hide -->
+
+            </div>
+            <!--End Col-9 -->
+            <!--Start Col-3 -->
+            <div class="col-12 d-none col-lg-3 d-lg-block ">
+                <!-- Start Color-Palet -->
+                <div class="row mb-5">
+                    <div class="bg-body-secondary shadow">
+                        <p class="mt-3">رنگ مورد نظر خود را انتخاب کنید.</p>
+                        <div class="theme-tray">
+                            <section class="pl-color">
+                                <h5>رنگ پایه</h5>
+                                <span title="Love Red" class="red"> </span>
+                                <span title="Clover Green" class="green"> </span>
+                                <span title="Dodger Blue" class="blue"> </span>
+                                <span title="Bright Neon Pink" class="bnp"> </span>
+                                <span title="Pumpkin Orange" class="orange"> </span>
+                                <span title="Black" class="black"> </span>
+                                <span title="Neon Pink" class="pink"> </span>
+                                <span title="Golden Brown" class="gol-b"> </span>
+                                <span title="Greenish Blue" class="greenish"> </span>
+                                <span title="Wood" class="wood"> </span>
+                            </section>
+                            <section class="gr-color">
+                                <h5>طیف رنگی</h5>
+                                <span title="Flickr" class="flickr"> </span>
+                                <span title="Facebook Messenger" class="fb-messenger"> </span>
+                                <span title="Moonlit Asteroid" class="moonlit"> </span>
+                                <span title="Park Life" class="park-life"> </span>
+                                <span title="Dance to Forget" class="d2f"> </span>
+                                <span title="Man of the Steel" class="steel-man"> </span>
+                                <span title="Amethyst" class="amethyst"> </span>
+                                <span title="Between the Clouds" class="between-clouds"> </span>
+                                <span title="Crazy Orange" class="crazy-orange"> </span>
+                                <span title="Endless River" class="endless-river"> </span>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Color-Palet -->
+                <!-- Start Ad -->
+                <div class="row mb-5">
+                    <div class="bg-body-secondary shadow Ads">
+                        <ul class="list-unstyled my-2 ">
+                            <!-- Ads 1 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/ab0df50b-6240-4e1d-96e3-1666e2db889d.gif"></a></li>
+                            <!-- Ads 2 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/7d35ea74-ef43-4989-8de7-8503663b0999.gif"></a></li>
+                            <!-- Ads 3 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/e78606fd-718e-4f72-a767-2040c026a3d5.gif"></a></li>
+                            <!-- Ads 4 -->
+                            <li class="mb-2"><a><img class="w-100 h-100" src="/Assets/Img/AdsImages/2657e694-1364-41b8-8d75-5a302e43b03e.gif"></a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- End Ad -->
+                <!-- LastNews -->
+                <div class="my-3">
+                    <!-- Start LastNews -->
+                    <div class="row ">
+                        <div class="bg-body-secondary rounded shadow position-relative LastNews-body">
+                            <div class="position-absolute bg-body-secondary px-3 pt-2 LastNews-text">آخرین اخبار</div>
+                            <ul class="list-unstyled mt-3">
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            ماجرای قهر و آشتی‌ها در صداوسیما/ زندگی شیرین می‌شود
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-video"></i>
+                                            سکوهای ورزشگاه آزادی آذرماه آماده می‌شود
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-video"></i>
+                                            تصاویری از بازیگوشی خانواده جدید پلنگ ایرانی در پارک ملی تندوره
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            ضایعات غذا در کشور بیش از ۲.۵ برابر اتحادیه اروپا/ "نان، برنج و میوه" بیشترین دورریز غذایی ایرانی‌ها
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            توصیه‌های طب سنتی برای کاهش "استرس و اضطراب" + اینفوگرافیک
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            اجرای فاز آزمایشی سامانه هشدار سریع زلزله در تهران/ کدام دستگاه‌ها باید به سامانه متصل شوند؟
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            خواص باورنکردنی «دانه چیا» را بشناسید
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            حذف بند بیمه خدمات سلامت روان از برنامه هفتم توسعه
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            دستاورد‌های موسسه رازی در نشست تولیدکنندگان واکسن
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            چرا خوردن صبحانه برای دانش‌آموزان بسیار مهم است؟
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            صعود یک‌پله‌ای ایران در رده‌بندی بزرگترین اقتصادهای دنیا با کنارزدن تایوان
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            عرضه خودروهای وارداتی در سامانه یکپارچه از فردا آغاز می‌شود
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            واکنش «رئیس‌ کل بانک مرکزی قطر» به ادعای «مسدود کردن دوباره ۶ میلیارد دلار ایران در قطر»
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            امیرعبداللهیان: در صورت ادامه جنایات رژیم صهیونیستی، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند
+                                        </p>
+                                    </a>
+                                </li>
+                                <li class="border-bottom py-2">
+                                    <a class="text-decoration-none">
+                                        <p class="LastNews-items">
+                                            <i class="fa fa-newspaper"></i>
+                                            نهمین روز «طوفان الاقصی»| تداوم نسل کشی در غزه/ گفت‌وگوی نتانیاهو برای پنجمین بار با بایدن / پیام غزه برای متجاوزان صهیونیست
+                                        </p>
+                                    </a>
+                                </li>
+                            </ul>
+                            <div class="text-center p-3">
+                                <a class="btn btn-secondary w-100">آخــرین اخبـــار ...</a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End LastNews -->
+                </div>
+                <!-- End LastNews -->
+            </div>
+            <!--End Col-3 -->
+        </div>
+    </div>
+    <!--End container -->
+</main>

@@ -1,0 +1,106 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Report.DeleteReportModel
+
+@{
+    ViewData["Title"] = " حذف خبر";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>حذف خبر</h1>
+
+<h3 class="alert alert-warning">آیا از @ViewData["title"] مطمئن هستید؟</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Title)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Description)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.FullText)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Report.FullText)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportImage)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/ReportImages/@Model.Report.ReportImage" /><hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportImageAlt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportImageAlt)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ImageTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ImageTitle)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportSource)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportSource)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Tags)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.CreateDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.CreateDate)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Author)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Author)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportView)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportView)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.IsHotNews)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.IsHotNews)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.HotNewsDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.HotNewsDate)<hr />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportGroup)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportGroup!.GroupName)
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Report.ReportId" />
+        <input type="submit" value="حذف خبر" class="btn btn-danger" />
+        <a asp-page="./Index" class="btn btn-default">بازگشت به لیست</a>
+    </form>
+</div>

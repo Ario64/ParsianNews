@@ -1,0 +1,136 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Report.EditReportModel
+
+@{
+    ViewData["Title"] = "ویرایش خبر";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-11">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Report.ReportId" />
+            <input type="hidden" asp-for="Report.ReportImage" />
+            <div class="form-group">
+                <label asp-for="Report.ReportGroupId" class="control-label"></label>
+                <select asp-for="Report.ReportGroupId" class="form-control" asp-items="ViewBag.ReportGroupId"></select>
+                <span asp-validation-for="Report.ReportGroupId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Report.Title" class="control-label"></label>
+                <input asp-for="Report.Title" class="form-control" />
+                <span asp-validation-for="Report.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Description" class="control-label"></label>
+                <textarea asp-for="Report.Description" rows="3" class="form-control" ></textarea>
+                <span asp-validation-for="Report.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.FullText" class="control-label"></label>
+                <textarea id="editor" asp-for="Report.FullText" class="form-control"></textarea>
+                <span asp-validation-for="Report.FullText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportImage" class="control-label"></label>
+                <input type="file" asp-for="Report.ReportImage" id="imgUpload" name="imgUp" /><hr />
+                <img src="/ReportImages/@Model.Report.ReportImage" id="imgPreview" alt="Model.ReportGroup.GroupImage" style="max-width:250px" class="img-thumnail" />
+                <span asp-validation-for="Report.ReportImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportImageAlt" class="control-label"></label>
+                <input asp-for="Report.ReportImageAlt" class="form-control" />
+                <span asp-validation-for="Report.ReportImageAlt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ImageTitle" class="control-label"></label>
+                <input asp-for="Report.ImageTitle" class="form-control" />
+                <span asp-validation-for="Report.ImageTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportSource" class="control-label"></label>
+                <input asp-for="Report.ReportSource" class="form-control" />
+                <span asp-validation-for="Report.ReportSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Tags" class="control-label"></label>
+                <input asp-for="Report.Tags" class="form-control" />
+                <span asp-validation-for="Report.Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.CreateDate" class="control-label"></label>
+                <input asp-for="Report.CreateDate" class="form-control" type="text" dir="ltr" onclick="Mh1PersianDatePicker.Show(this, '@DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss")')" />
+                <span asp-validation-for="Report.CreateDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Author" class="control-label"></label>
+                <input asp-for="Report.Author" class="form-control" />
+                <span asp-validation-for="Report.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportView" class="control-label"></label>
+                <input asp-for="Report.ReportView" class="form-control" />
+                <span asp-validation-for="Report.ReportView" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Report.IsHotNews" /> @Html.DisplayNameFor(model => model.Report.IsHotNews)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.HotNewsDate" class="control-label"></label>
+                <input asp-for="Report.HotNewsDate" class="form-control" type="text" dir="ltr" onclick="Mh1PersianDatePicker.Show(this, '@DateTime.Now.ToString("yyyy/MM/dd - HH:mm:ss")')" />
+                <span asp-validation-for="Report.HotNewsDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ویرایش" class="btn btn-sm btn-warning" />
+                <a asp-page="./Index" class="btn btn-sm btn-default">بازگشت به لیست</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPreview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgUpload").change(function () {
+            readURL(this);
+        });
+    </script>
+}
+<script src="/Assets/ckeditor5-build-classic/ckeditor.js"></script>
+<script src="/Assets/ckeditor5-build-classic/translations/fa.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            language: 'fa',
+            placeholder: 'متن خبر ...'
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>
+<link href="~/assets/calendar/mh1persiandatepicker.css" rel="stylesheet" />
+<script src="~/assets/calendar/mh1persiandatepicker.js"></script>

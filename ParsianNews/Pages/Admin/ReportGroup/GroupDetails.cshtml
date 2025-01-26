@@ -1,0 +1,34 @@
+﻿@page
+@model ParsianNews.Pages.Admin.ReportGroup.GroupDetailsModel
+
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = " جزییات گروه خبری" + " " + Model.ReportGroup!.GroupName;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.ReportGroup!.GroupImage)</th>
+                <th>@Html.DisplayNameFor(model => model.ReportGroup!.GroupName)</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <img src="/GroupImages/@Html.DisplayFor(model => Model.ReportGroup.GroupImage)" alt="Model.ReportGroup.GroupImage" style="max-width:250px" class="img-thumnail" />
+                </td>
+                <td>@Html.DisplayFor(modelItem => Model.ReportGroup.GroupName)</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div>
+    <a asp-page="EditGroup" asp-route-id="@Model.ReportGroup.GroupId">ویرایش</a> |
+    <a asp-page="Index">بازگشت به لیست</a>
+</div>

@@ -1,0 +1,113 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Report.CreateReportModel
+
+@{
+    ViewData["Title"] = "گروه خبری جدید";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Report.ReportGroupId" class="control-label"></label>
+                <select class="form-control" asp-for="Report.ReportGroupId" asp-items="ViewBag.ReportGroupId" style="padding:3px;">
+                    <option>انتخاب گروه خبری</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <span class="text-danger">*</span>
+                <label asp-for="Report.Title" class="control-label"></label>
+                <input asp-for="Report.Title" class="form-control" />
+                <span asp-validation-for="Report.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Description" class="control-label"></label>
+                <textarea rows="3" asp-for="Report.Description" class="form-control"></textarea>
+                <span asp-validation-for="Report.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.FullText" class="control-label"></label>
+                <textarea asp-for="Report.FullText" id="editor"></textarea>
+                <span asp-validation-for="Report.FullText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportImage" class="control-label"></label>
+                <input type="file" id="imgUpload" name="imgUp" />
+                <hr />
+                <div style="padding:10px;">
+                    <img style="max-width:350px;max-height:350px" id="imgPreview" />
+                </div>
+                <br />
+                <span asp-validation-for="Report.ReportImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportImageAlt" class="control-label"></label>
+                <input asp-for="Report.ReportImageAlt" class="form-control" />
+                <span asp-validation-for="Report.ReportImageAlt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ImageTitle" class="control-label"></label>
+                <input asp-for="Report.ImageTitle" class="form-control" />
+                <span asp-validation-for="Report.ImageTitle" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.ReportSource" class="control-label"></label>
+                <input asp-for="Report.ReportSource" class="form-control" />
+                <span asp-validation-for="Report.ReportSource" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Tags" class="control-label"></label>
+                <input asp-for="Report.Tags" class="form-control" />
+                <span asp-validation-for="Report.Tags" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Report.Author" class="control-label"></label>
+                <input asp-for="Report.Author" class="form-control" />
+                <span asp-validation-for="Report.Author" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+                <a asp-page="Index" class="btn btn-sm btn-default">بازگشت به لیست</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#imgPreview').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#imgUpload").change(function () {
+            readURL(this);
+        });
+    </script>
+}
+
+<script src="/Assets/ckeditor5-build-classic/ckeditor.js"></script>
+<script src="/Assets/ckeditor5-build-classic/translations/fa.js"></script>
+<script>
+    ClassicEditor
+        .create(document.querySelector('#editor'), {
+            language: 'fa',
+            placeholder: 'متن خبر ...'
+        })
+        .catch(error => {
+            console.error(error);
+        });
+</script>

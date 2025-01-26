@@ -1,0 +1,103 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Report.DetailsModel
+
+@{
+    ViewData["Title"] = "جزییات" + " " + Model.Report.Title;
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Title)
+        </dt>
+        <dd class="col-sm-10">
+            <h3>@Html.DisplayFor(model => model.Report.Title)</h3>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Description)
+        </dt>
+        <dd class="col-sm-10">
+            <h4>@Html.DisplayFor(model => model.Report.Description)</h4>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.FullText)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.Raw(Model.Report.FullText)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportImage)
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/ReportImages/@Model.Report.ReportImage" class="thumbnail"/>
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportImageAlt)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportImageAlt)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ImageTitle)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ImageTitle)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportSource)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportSource)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Tags)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Tags)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.CreateDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.CreateDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.Author)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.Author)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportView)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.ReportView)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.IsHotNews)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.IsHotNews)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.HotNewsDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Report.HotNewsDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Report.ReportGroup)
+        </dt>
+        <dd class="col-sm-10">
+            <h3>@Html.DisplayFor(model => model.Report.ReportGroup!.GroupName)</h3>
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./EditReport" asp-route-id="@Model.Report.ReportId" class="btn btn-sm btn-warning">ویرایش</a> |
+    <a asp-page="./Index" class="btn btn-sm btn-default">بازگشت به لیست</a>
+</div>
