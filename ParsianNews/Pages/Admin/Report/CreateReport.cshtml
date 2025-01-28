@@ -88,11 +88,9 @@
                 reader.onload = function (e) {
                     $('#imgPreview').attr('src', e.target.result);
                 }
-
                 reader.readAsDataURL(input.files[0]);
             }
         }
-
         $("#imgUpload").change(function () {
             readURL(this);
         });

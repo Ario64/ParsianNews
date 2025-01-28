@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using ParsianNews.Validators;
 
 namespace ParsianNews.Pages.Admin.Report
 {
@@ -34,7 +33,7 @@ namespace ParsianNews.Pages.Admin.Report
 
             Report.CreateDate = DateTime.Now;
             Report.ReportView = 0;
-            if (imgUp != null && imgUp.IsImage())
+            if (imgUp != null)
             {
                 var imgPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ReportImages/");
                 if (!Directory.Exists(imgPath))

@@ -10,5 +10,6 @@ public static class ReportGroup
     public const string Social = "اجتماعی";
     public const string Artistic = "هنری";
     public const string Cultural = "فرهنگی";
+    public const string MultiMedia = "چند رسانه ای";
 
 }

@@ -44,7 +44,7 @@ namespace ParsianNews.Pages.Admin.Report
                 return Page();
             }
 
-            if (imgUp != null && imgUp.IsImage())
+            if (imgUp != null)
             {
                 string deleteImgPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/ReportImages/", Report.ReportImage!);
                 if (System.IO.File.Exists(deleteImgPath))
