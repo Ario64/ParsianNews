@@ -94,132 +94,13 @@
                 <div class="tab-content" id="myTabContent">
                     <!-- Start اجتماعی -->
                     @await Component.InvokeAsync("NavTabSocialReportsComponent")
-                    <!-- End اجتماعی -->
                     <!-- Start فرهنگی -->
                     @await Component.InvokeAsync("NavTabCulturalReportsComponent")
-                    <!-- End فرهنگی -->
-                    <!-- Start سیاسی -->
-                    <div class="tab-pane fade" id="Political-tab-pane" role="tabpanel" aria-labelledby="Political-tab" tabindex="0">
-                        <div class="my-2 body-text-NavTab">
-                            <a class="text-decoration-none text-NavTab"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
-                        </div>
-                        <div class="card-group mb-3 list-group-unbordered">
-                            <!-- card 1 -->
-                            <div class="card p-2 border-secondary">
-                                <a><img src="/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
-                                <div class="card-body">
-                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> امیرعبداللهیان: در صورت ادامه جنایات رژیم صهیونیستی، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند </p></a>
-                                    <p class="card-text" style="margin-bottom: 2rem;">
-                                        وزیر امور خارجه در دیدار با همتای قطری در دوحه گفت: در صورت ادامه جنایات رژیم صهیونیستی علیه مردم و شهروندان فلسطین، هیچ کس نمی‌تواند تضمین کند که شرایط در منطقه به‌ همین شکل باقی بماند.
-                                    </p>
-                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> یکشنبه ۲۳ مهر ۱۴۰۲ </small></p>
-                                </div>
-                            </div>
-                            <!-- card 2 -->
-                            <div class="card p-2 border-secondary">
-                                <a><img src="/Assets/Img/ReportImages/bb5179a2-f108-4fd2-8970-4fa0f75be148.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
-                                <div class="card-body">
-                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> مدیریت واحدی در روستاها وجود ندارد/ در برنامه هفتم تدبیر شود </p></a>
-                                    <p class="card-text" style="margin-bottom: 2rem;">
-                                        رییس مجلس شورای اسلامی گفت: روستاها الان صاحب و متولی مشخصی ندارند که باید در برنامه هفتم توسعه برای رفع این مساله تدبیر شود.
-                                    </p>
-                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> یکشنبه ۲۳ مهر ۱۴۰۲ </small></p>
-                                </div>
-                            </div>
-                            <!-- card 3 -->
-                            <div class="card p-2 border-secondary">
-                                <a><img src="/Assets/Img/ReportImages/9a41f08f-b2d3-40e8-aebd-d1799b2bd100.jpg" class="card-img-top body-img-NavTab" alt="..."></a>
-                                <div class="card-body">
-                                    <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> هیچ راهکاری بدون توجه به حقوق فلسطینیان نمی‌تواند مشکل فلسطین را حل کند </p></a>
-                                    <p class="card-text" style="margin-bottom: 2rem;">
-                                        رئیس جمهور با بیان اینکه تحولات اخیر نشان داد که هیچ راهکاری بدون توجه به حقوق مردم فلسطین نمی‌تواند این مشکل را حل و فصل کند، خاطرنشان کرد: تردیدی نیست که جنایات اخیر صهیونیست‌ها با چراغ سبز حامیان این رژیم انجام می‌شود، اما این اقدامات نه تنها آنها را به اهداف‌شان نمی‌رساند، بلکه باعث گسترش و تشدید ناامنی در منطقه و جهان خواهد شد.
-                                    </p>
-                                    <p class="card-text" style="position:absolute; bottom:20px;"><small class="text-body-secondary"><i class="fas fa-clock"></i> جمعه ۲۱ مهر ۱۴۰۲ </small></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- End سیاسی -->
                     <!-- start هنری -->
                     @await Component.InvokeAsync("NavTabArtisticReportsComponent")
-                    <!-- End هنری -->
                 </div>
-                <!-- End NavTabs -->
                 <!-- Start TopReports Line -->
-                <div class="box">
-                    <h6 class="position-relative ">
-                        <span class="TopReports-Line-Color position-relative bg-body"> محبوب ترین اخبار </span>
-                    </h6>
-                </div>
-                <!-- End TopReports Line -->
-                <!-- Start TopReports -->
-                <div class="TopReports-row">
-                    <!-- card 1 -->
-                    <div class="TopReports-col-1-of-3">
-                        <div class="TopReports-card">
-                            <div class="TopReports-card__side TopReports-card__side--front-1">
-                                <img src="/Assets/Img/ReportImages/44753b0a-b268-458a-b7b9-f3587b24973b.jpg" class="w-100 h-100" />
-                            </div>
-                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
-                                <div class="TopReports-card__side__back-1__body">
-                                    <p class="TopReports-card__price-only">
-                                        صعود امیدهای ایران به یک چهارم نهایی با هدیه‌های تایلندی
-                                    </p>
-                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 2 -->
-                    <div class="TopReports-col-1-of-3">
-                        <div class="TopReports-card">
-                            <div class="TopReports-card__side TopReports-card__side--front-1">
-                                <img src="/Assets/Img/ReportImages/7fecf5b4-6482-4ad0-afdc-7390d669c099.jpg" class="w-100 h-100" />
-                            </div>
-                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
-                                <div class="TopReports-card__side__back-1__body">
-                                    <p class="TopReports-card__price-only">
-                                        عضو اتاق بازرگانی ایران: فرزین با اجرای سیاست تثبیت موفق عمل کرده است
-                                    </p>
-                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 3 -->
-                    <div class="TopReports-col-1-of-3">
-                        <div class="TopReports-card">
-                            <div class="TopReports-card__side TopReports-card__side--front-1">
-                                <img src="/Assets/Img/ReportImages/182bdc16-e258-4d06-9e2b-fb8d2ccabe76.jpg" class="w-100 h-100" />
-                            </div>
-                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
-                                <div class="TopReports-card__side__back-1__body">
-                                    <p class="TopReports-card__price-only">
-                                        خواص باورنکردنی «دانه چیا» را بشناسید
-                                    </p>
-                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- card 4 -->
-                    <div class="TopReports-col-1-of-3">
-                        <div class="TopReports-card">
-                            <div class="TopReports-card__side TopReports-card__side--front-1">
-                                <img src="/Assets/Img/ReportImages/acd55981-6c23-4c03-a103-188fbb52b1d4.jpg" class="w-100 h-100" />
-                            </div>
-                            <div class="TopReports-card__side TopReports-card__side--back TopReports-card__side--back-1">
-                                <div class="TopReports-card__side__back-1__body">
-                                    <p class="TopReports-card__price-only">
-                                        صعود سومین ووشوکار ایران به فینال بازی‌های آسیایی
-                                    </p>
-                                    <a class="TopReports-card__side__back-1__btn btn btn-secondary"> مشاهده خبر </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+                @await Component.InvokeAsync("TopReportsComponent")
                 <!-- End TopReports -->
                 <!-- Start SpecialReports -->
                 <div class="mb-5">
