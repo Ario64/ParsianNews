@@ -418,7 +418,6 @@
                 slider.play();
               }
             }
-
             // setup flags to prevent event duplication
             if (watchedEvent === "") {
               watchedEvent = event.type;

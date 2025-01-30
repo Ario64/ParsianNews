@@ -1,5 +1,4 @@
 ﻿@page
-@using ParsianNews.Models
 @using Microsoft.AspNetCore.Mvc.TagHelpers
 @using ParsianNews.Utilities
 @model ParsianNews.Pages.ReportModel
@@ -7,7 +6,9 @@
     Layout = "Shared/_Layout";
     ViewData["Title"] = "";
 }
-
+<link href="~/assets/flexslider/flexslider.css" rel="stylesheet" />
+<script src="~/assets/flexslider/jquery.min.js"></script>
+<script src="~/assets/flexslider/jquery.flexslider.js"></script>
 <main>
     <!--Start container -->
     <div class="container">
@@ -48,26 +49,26 @@
 
                     <section id="print_this">
                         <div>
-                            <img src="/ReportImages/@Model.Report.ReportImage" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt">
+                            <a asp-page="./Report" asp-route-id="@Model.Report.ReportId"><img src="/ReportImages/@Model.Report.ReportImage" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt"></a>
                         </div>
 
                         <div>
-                            <p class="title-report">
-                                @Model.Report.Title
-                            </p>
+                            <a asp-page="./Report" asp-route-id="@Model.Report.ReportId">
+                                <p class="title-report">
+                                    @Model.Report.Title
+                                </p>
+                            </a>
                             <p class="description-report">
                                 @Model.Report.Description
                             </p>
                             <div>
-                                <span>
-                                    <p>
-                                        @Html.Raw(Model.Report.FullText)
-                                    </p>
-                                    <div class="d-inline-flex">
-                                        <i class="fas fa-user-pen px-2 mt-1 icon-author-report"></i>
-                                        <p class="text-author-report">نویسنده: @Model.Report.Author</p>
-                                    </div>
-                                </span>
+                                <p>
+                                    @Html.Raw(Model.Report.FullText)
+                                </p>
+                                <div class="d-inline-flex">
+                                    <i class="fas fa-user-pen px-2 mt-1 icon-author-report"></i>
+                                    <p class="text-author-report">نویسنده: @Model.Report.Author</p>
+                                </div>
                             </div>
 
                         </div>
@@ -81,7 +82,7 @@
                             </div>
                             <div class="share position-absolute d-inline-flex end-0">
                                 <a><img src="Assets/Img/Links/Telegram_2_11zon.png" class="rounded mx-1 shadow share-img-report"></a>
-                                <a><img src="Assets/Img/Links/Instagram_11zon.jpg" class="rounded mx-1 shadow share-img-report"></a>
+                                <a href="https://www.instagram.com/"><img src="Assets/Img/Links/Instagram_11zon.jpg" class="rounded mx-1 shadow share-img-report"></a>
                             </div>
                         </div>
                     </div>
@@ -103,12 +104,8 @@
                             }
                             <li class="list-unstyled"> </li>
                         }
-
-
                     </ul>
                 </div>
-
-
                 <!-- Start RelatedReports Line -->
                 <div class="box">
                     <h6 class="position-relative ">
@@ -134,23 +131,17 @@
 
                 <div class="flexslider carousel">
                     <ul class="slides">
-                        <li style="padding: 5px;">
-                            <div style="background: #ccc; height: 330px; overflow: hidden">
-                                <a class="" style="text-decoration:none;">
-                                    <img src="~/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" style=" height:240px;" />
-                                    <p style="color: dimgray; padding: 10px; font-weight:bold; text-align: justify-all; border-top: 3px solid darkorange;"> واکنش جالب ویسی به بازگشت به فولاد/ می‌خواهیم مردم خوزستان را خوشحال کنیم </p>
-                                </a>
-                            </div>
-                        </li>
-                        <li style="padding: 5px;">
-                            <div style="background: #ccc; height: 330px; overflow: hidden">
-                                <a class="" style="text-decoration:none;">
-                                    <img src="~/Assets/Img/ReportImages/56a51b62-c432-45fb-8f4f-6834dcdc694d.jpg" style=" height:240px;" />
-                                    <p style="color: dimgray; padding: 10px; font-weight:bold; text-align: justify-all; border-top: 3px solid darkorange;"> واکنش جالب ویسی به بازگشت به فولاد/ می‌خواهیم مردم خوزستان را خوشحال کنیم </p>
-                                </a>
-                            </div>
-                        </li>
-                        <!-- items mirrored twice, total of 12 -->
+                        @foreach (var report in Model.Reports!)
+                        {
+                            <li style="padding: 5px;">
+                                <div style="background: #ccc; height: 330px; overflow: hidden">
+                                    <a asp-page="./Report" asp-route-id="@report.ReportId" style="text-decoration:none;">
+                                        <img src="/ReportImages/@report.ReportImage" style="height:240px;" />
+                                        <p style="color:dimgray; padding:10px; font-weight:bold; text-align:justify-all; border-top:3px solid darkorange;">@report.Title</p>
+                                    </a>
+                                </div>
+                            </li>
+                        }
                     </ul>
                 </div>
                 <!-- End RelatedReports -->
@@ -168,15 +159,12 @@
 
                             <div class="form-group">
                                 <input name="name" placeholder="نام شما" id="txtName" class="form-control" />
-                                <!-- <span asp-validation-for="Comment.Name" class="text-danger"></span> -->
                             </div>
                             <div class="form-group my-3">
                                 <input name="email" placeholder="پست الکترونیک" id="txtEmail" class="form-control" />
-                                <!-- <span asp-validation-for="Comment.Email" class="text-danger"></span> -->
                             </div>
                             <div class="form-group">
                                 <textarea id="editor" name="comment" placeholder="متن پیام" class="form-control ck-editor__editable"></textarea>
-                                <!-- <span asp-validation-for="Comment.CommentText" class="text-danger"></span> -->
                             </div>
 
                             <div class="position-absolute d-inline-flex end-0">
