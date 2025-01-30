@@ -1,0 +1,46 @@
+﻿@page
+@using ParsianNews.Utilities
+@model ParsianNews.Pages.AllReportsModel
+@{
+    ViewData["Title"] = " اخبار گروه " + " " + ViewBag.GroupName;
+}
+
+<div class="col-12 col-lg-9 mb-5">
+    <div class=" bg-light-subtle border-style rounded p-3">
+        <h5>@ViewData["Title"]</h5>
+        <ul class=" d-none d-sm-flex row mb-3 list-unstyled">
+            @foreach (var report in Model.Reports!)
+            {
+                <li class="sport-card col-xl-3 col-lg-4 col-sm-6 my-sm-2">
+                    <div class=" card shadow">
+                        <a asp-page="./Report" asp-route-id="@report.ReportId">
+                            <img src="/ReportImages/@report.ReportImage" class="card-img-top" style="max-width: 100%; height: 150px ; max-height: 150px;" alt="@report.ReportImageAlt">
+                        </a>
+                        <div class="card-body bg-body-secondary p-2" style="max-width: 100%; height:110px; max-height: 110px; overflow:hidden; border-top: 2px solid red;">
+                            <a class="text-decoration-none" asp-page="./Report" asp-route-id="@report.ReportId">
+                                <p class="m-0"> @report.Title </p>
+                                <div class="position-absolute" style="top: 90%; width: 95%;">
+                                    <p class="d-inline-block bg-body-secondary px-1 m-0" style="color: #b9b9bb; font-size: .7rem; width: 100%;">   <i class="fas fa-clock" style="color: #b9b9bb; font-size: .7rem;"></i> <small class="text-body-secondary"> @report.CreateDate.ToShamsi() </small> </p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+    <!-- Pagintion -->
+    <div class="row">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">صفحه اول</a></li>
+                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> قبلی </a></li>
+                <li style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> ۱ </a></li>
+                <li style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> ۲ </a></li>
+                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">بعدی</a></li>
+                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">صفحه آخر</a></li>
+            </ul>
+        </nav>
+    </div>
+    <!-- End Pagination -->
+</div>

@@ -14,15 +14,19 @@ namespace ParsianNews.Pages
             _context = context;
         }
 
-        public Report Report { get; set; }
+        public Report? Report { get; set; }
         public IEnumerable<Report>? Reports { get; set; }
 
         public void OnGet(int id)
         {
-            Report = _context.Reports.Include(i => i.ReportGroup).FirstOrDefault(f => f.ReportId == id)!;
+            Report = _context.Reports
+                .Include(i => i.ReportGroup)
+                .FirstOrDefault(f => f.ReportId == id)!;
+
             Report.ReportView += 1;
             _context.Reports.Update(Report);
             _context.SaveChanges();
+
             int take = 10;
             string groupName = Report.ReportGroup!.GroupName!;
             Reports = _context.Reports

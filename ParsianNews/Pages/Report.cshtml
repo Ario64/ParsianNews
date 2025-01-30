@@ -4,7 +4,7 @@
 @model ParsianNews.Pages.ReportModel
 @{
     Layout = "Shared/_Layout";
-    ViewData["Title"] = "";
+    ViewData["Title"] = "خبر"+" "+@Model.Report!.ReportGroup!.GroupName;
 }
 <link href="~/assets/flexslider/flexslider.css" rel="stylesheet" />
 <script src="~/assets/flexslider/jquery.min.js"></script>
@@ -21,7 +21,7 @@
                             <li class="item-top-report">
                                 <i class="fa fa-calendar-alt px-2 icon-top-report"></i>
                                 <span class="texticon-top-report"> زمان درج: </span>
-                                <span class="texticon-top-report">@Model.Report.CreateDate.ToShamsi()</span>
+                                <span class="texticon-top-report">@Model.Report!.CreateDate.ToShamsi()</span>
                             </li>
                             <li class="item-top-report">
                                 <i class="fa fa-folder-open px-2 icon-top-report"></i>
@@ -152,11 +152,9 @@
                         <p class="commenttext-style-report">نظرات کاربران در رابطه با این خبر</p>
                     </div>
                     <div class="comment-body-report">
-
                         <form method="post" class="position-relative">
                             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                             <p style="font-size: .8rem;">دیدگاه خود را بنویسید</p>
-
                             <div class="form-group">
                                 <input name="name" placeholder="نام شما" id="txtName" class="form-control" />
                             </div>
@@ -166,7 +164,6 @@
                             <div class="form-group">
                                 <textarea id="editor" name="comment" placeholder="متن پیام" class="form-control ck-editor__editable"></textarea>
                             </div>
-
                             <div class="position-absolute d-inline-flex end-0">
                                 <input type="submit" class="rounded btn btn-sm contact1-form-btn" value="ثبت دیدگاه شما" />
                             </div>
