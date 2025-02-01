@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using ParsianNews.Validators;
 
 namespace ParsianNews.Pages.Admin.Report
 {
@@ -41,6 +40,7 @@ namespace ParsianNews.Pages.Admin.Report
         {
             if (!ModelState.IsValid)
             {
+                ViewData["ReportGroupId"] = new SelectList(_context.ReportGroups, "GroupId", "GroupName");
                 return Page();
             }
 

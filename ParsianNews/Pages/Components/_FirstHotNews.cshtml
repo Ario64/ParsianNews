@@ -1,0 +1,17 @@
+﻿@using ParsianNews.Utilities
+@model ParsianNews.Models.Report
+
+<div class="box mb-3">
+    <h6 class="position-relative ">
+        <span class="HotNews-Line-Color position-relative bg-body-tertiary">@ReportGroup.HotNews</span>
+        <a class="more-report bg-body-tertiary"> <i class="fas fa-bars ms-3"></i> همه اخبار </a>
+    </h6>
+</div>
+<div class="col-lg-6 px-lg-2 col-sm-12 m-sm-0">
+    <div class="row HotNewsFirst">
+        <a asp-page="./Report" asp-route-id="@Model.ReportId">
+            <img src="/ReportImages/@Model.ReportImage" class="my-2 hotnews-img-index" title="@Model.ImageTitle" alt="@Model.ReportImageAlt">
+        </a>
+        <span class="pb-3 mx-2"><a asp-page="./Report" asp-route-id="@Model.ReportId" class="text-decoration-none"> @Model.Title </a></span>
+    </div>
+</div>

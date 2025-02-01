@@ -4,7 +4,7 @@
 @model ParsianNews.Pages.ReportModel
 @{
     Layout = "Shared/_Layout";
-    ViewData["Title"] = "خبر"+" "+@Model.Report!.ReportGroup!.GroupName;
+    ViewData["Title"] = "خبر" + " " + @Model.Report!.ReportGroup!.GroupName;
 }
 <link href="~/assets/flexslider/flexslider.css" rel="stylesheet" />
 <script src="~/assets/flexslider/jquery.min.js"></script>
@@ -49,15 +49,13 @@
 
                     <section id="print_this">
                         <div>
-                            <a asp-page="./Report" asp-route-id="@Model.Report.ReportId"><img src="/ReportImages/@Model.Report.ReportImage" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt"></a>
+                            <img src="/ReportImages/@Model.Report.ReportImage" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt">
                         </div>
 
                         <div>
-                            <a asp-page="./Report" asp-route-id="@Model.Report.ReportId">
-                                <p class="title-report">
-                                    @Model.Report.Title
-                                </p>
-                            </a>
+                            <p class="title-report text-decoration-none">
+                                @Model.Report.Title
+                            </p>
                             <p class="description-report">
                                 @Model.Report.Description
                             </p>
