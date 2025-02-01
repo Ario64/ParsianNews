@@ -29,18 +29,25 @@
             }
         </ul>
     </div>
-    <!-- Pagintion -->
-    <div class="row">
-        <nav aria-label="Page navigation example">
-            <ul class="pagination justify-content-center">
-                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">صفحه اول</a></li>
-                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> قبلی </a></li>
-                <li style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> ۱ </a></li>
-                <li style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;"> ۲ </a></li>
-                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">بعدی</a></li>
-                <li class="page-item" style="padding: 20px 0;"><a class="page-link" style="font-size: .7rem;">صفحه آخر</a></li>
-            </ul>
-        </nav>
-    </div>
+    <!-- Pagination -->
+    @if (ViewBag.Count > ViewBag.Take)
+    {
+        <div class="row">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item @((ViewBag.PageId==1)?"disabled":"")" style="padding: 20px 0;"><a asp-route-group="@ViewBag.GroupName" asp-route-pageid="1" class="page-link" style="font-size: .7rem;">صفحه اول</a></li>
+                    <li class="page-item @((ViewBag.PageId==1)?"disabled":"")" style="padding: 20px 0;"><a asp-route-group="@ViewBag.GroupName" asp-route-pageid="@ViewBag.PreviousPage" class="page-link" style="font-size: .7rem;"> قبلی </a></li>
+                    @for (int i = 1; i <= ViewBag.PageCount; i++)
+                    {
+                        <li class="@((ViewBag.PageId ==i)?"active":"")" style="padding: 20px 0;">
+                            <a asp-route-group="@ViewBag.GroupName" asp-route-pageid="@i" class="page-link" style="font-size: .7rem;">@i</a>
+                        </li>
+                    }
+                    <li class="page-item @((ViewBag.PageId == ViewBag.PageCount)?"disabled":"")" style="padding: 20px 0;"><a asp-route-group="@ViewBag.GroupName" asp-route-pageid="@ViewBag.NextPage" class="page-link" style="font-size: .7rem;">بعدی</a></li>
+                    <li class="page-item @((ViewBag.PageId == ViewBag.PageCount)?"disabled":"")" style="padding: 20px 0;"><a asp-route-group="@ViewBag.GroupName" asp-route-pageid="@ViewBag.PageCount" class="page-link" style="font-size: .7rem;">صفحه آخر</a></li>
+                </ul>
+            </nav>
+        </div>
+    }
     <!-- End Pagination -->
 </div>
