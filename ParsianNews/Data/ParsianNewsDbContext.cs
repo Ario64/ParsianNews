@@ -15,6 +15,8 @@ namespace ParsianNews.Data
         public DbSet<ReportGroup> ReportGroups { get; set; }
         public DbSet<Report> Reports { get; set; }
         public DbSet<Hashtag> Hashtags { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         #endregion
 
@@ -54,7 +56,25 @@ namespace ParsianNews.Data
                 {
                     h.HasKey(k => k.HashtagId);
                     h.Property(p => p.HashtagName).HasMaxLength(50);
-                } );
+                });
+
+            builder.Entity<Gallery>(
+                g =>
+                {
+                    g.HasKey(k => k.GalleryId);
+                    g.Property(p => p.GalleryName).HasMaxLength(50).IsRequired();
+                    g.Property(p => p.Description).HasMaxLength(600);
+                });
+
+            builder.Entity<Image>(
+                i =>
+                {
+                    i.HasKey(k => k.ImageId);
+                    i.Property(p => p.ImageName).HasMaxLength(50).IsRequired();
+                    i.Property(p => p.CreateDate).HasDefaultValue(DateTime.Now);
+                    i.HasOne(h => h.Gallery).WithMany("Images")
+                        .HasForeignKey(f => f.GalleryId);
+                });
 
             base.OnModelCreating(builder);
         }
