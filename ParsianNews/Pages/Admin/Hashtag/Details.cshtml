@@ -1,0 +1,28 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Hashtag.DetailsModel
+@{
+    Layout = "Shared/_AdminLayout";
+    ViewData["Title"] = "جزییات" + " " + Model.Hashtag.HashtagName;
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+<div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(model=> model.Hashtag.HashtagName)</th>
+                <th>دستورات</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>@Html.DisplayFor(model => model.Hashtag.HashtagName)</td>
+                <td>
+                    <a asp-page="./EditHashtag" asp-route-id="@Model.Hashtag.HashtagId" class="btn btn-sm btn-warning">ویرایش</a> |
+                    <a asp-page="./Index" class="btn btn-sm btn-default">بازگشت به لیست</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

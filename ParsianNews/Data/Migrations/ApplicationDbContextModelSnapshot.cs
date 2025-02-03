@@ -220,6 +220,24 @@ namespace ParsianNews.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ParsianNews.Models.Hashtag", b =>
+                {
+                    b.Property<int>("HashtagId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("HashtagId"));
+
+                    b.Property<string>("HashtagName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
+
+                    b.HasKey("HashtagId");
+
+                    b.ToTable("Hashtags");
+                });
+
             modelBuilder.Entity("ParsianNews.Models.Report", b =>
                 {
                     b.Property<int>("ReportId")

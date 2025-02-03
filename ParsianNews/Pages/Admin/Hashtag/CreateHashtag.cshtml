@@ -1,0 +1,34 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Hashtag.CreateHashtagModel
+
+@{
+    ViewData["Title"] = "ثبت هشتگ جدید";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-10">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Hashtag.HashtagName" class="control-label"></label>
+                <input asp-for="Hashtag.HashtagName" class="form-control" />
+                <span asp-validation-for="Hashtag.HashtagName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="ثبت" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">بازگشت به لیست</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

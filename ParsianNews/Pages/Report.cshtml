@@ -48,10 +48,18 @@
                     </div>
 
                     <section id="print_this">
-                        <div>
-                            <img src="/ReportImages/@Model.Report.ReportImage" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt">
-                        </div>
-
+                        @if (Model.Report.ReportGroup!.GroupName == ReportGroup.MultiMedia)
+                        {
+                            <div>
+                                <video src="/ReportImages/@Model.Report.ReportImage" preload="metadata" controls class="rounded img-main-report"></video>
+                            </div>
+                        }
+                        else
+                        {
+                            <div>
+                                <img src="/ReportImages/@Model.Report.ReportImage" title="@Model.Report.ImageTitle" class="rounded img-main-report" alt="@Model.Report.ReportImageAlt">
+                            </div>
+                        }
                         <div>
                             <p class="title-report text-decoration-none">
                                 @Model.Report.Title
@@ -134,8 +142,16 @@
                             <li style="padding: 5px;">
                                 <div style="background: #ccc; height: 330px; overflow: hidden">
                                     <a asp-page="./Report" asp-route-id="@report.ReportId" style="text-decoration:none;">
-                                        <img src="/ReportImages/@report.ReportImage" style="height:240px;" />
-                                        <p style="color:dimgray; padding:10px; font-weight:bold; text-align:justify-all; border-top:3px solid darkorange;">@report.Title</p>
+                                        @if (report.ReportGroup!.GroupName == ReportGroup.MultiMedia)
+                                        {
+                                            <video src="/ReportImages/@report.ReportImage" style="height:240px;" preload="metadata" controls></video>
+                                            <p style="color:dimgray; padding:10px; font-weight:bold; text-align:justify-all; border-top:3px solid darkorange;">@report.Title</p>
+                                        }
+                                        else
+                                        {
+                                            <img src="/ReportImages/@report.ReportImage" style="height:240px;" />
+                                            <p style="color:dimgray; padding:10px; font-weight:bold; text-align:justify-all; border-top:3px solid darkorange;">@report.Title</p>
+                                        }
                                     </a>
                                 </div>
                             </li>

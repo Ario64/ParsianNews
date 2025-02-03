@@ -1,0 +1,38 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Hashtag.IndexModel
+
+@{
+    ViewData["Title"] = "هشتگ ها";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-page="CreateHashtag">هشتگ جدید</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Hashtag[0].HashtagName)
+            </th>
+            <th>دستورات</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Hashtag)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HashtagName)
+                </td>
+                <td>
+                    <a asp-page="./EditHashtag" asp-route-id="@item.HashtagId">ویرایش</a> |
+                    <a asp-page="./Details" asp-route-id="@item.HashtagId">جزییات</a> |
+                    <a asp-page="./DeleteHashtag" asp-route-id="@item.HashtagId">حذف</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

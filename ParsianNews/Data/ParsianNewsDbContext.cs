@@ -14,6 +14,7 @@ namespace ParsianNews.Data
 
         public DbSet<ReportGroup> ReportGroups { get; set; }
         public DbSet<Report> Reports { get; set; }
+        public DbSet<Hashtag> Hashtags { get; set; }
 
         #endregion
 
@@ -47,6 +48,13 @@ namespace ParsianNews.Data
                     r.HasOne(h => h.ReportGroup).WithMany("Reports")
                         .HasForeignKey(f => f.ReportGroupId);
                 });
+
+            builder.Entity<Hashtag>(
+                h =>
+                {
+                    h.HasKey(k => k.HashtagId);
+                    h.Property(p => p.HashtagName).HasMaxLength(50);
+                } );
 
             base.OnModelCreating(builder);
         }
