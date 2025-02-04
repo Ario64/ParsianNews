@@ -11,12 +11,12 @@
     <div class="shadow rounded">
         <div class="card overflow-hidden">
             <div class="">
-                <a>
+                <a asp-page="./Report" asp-route-id="@Model.ReportId">
                 <img src="/ReportImages/@Model.ReportImage" class="card-img-top w-100 card-img-plusfirst" title="@Model.ImageTitle" alt="@Model.ReportImageAlt">
                 </a>
             </div>
             <div class="card-body bg-body-secondary overflow-hidden p-2 w-100 card-body-plusfirst">
-                <a class="card-text-plusfirst">
+                <a asp-page="./Report" asp-route-id="@Model.ReportId" class="card-text-plusfirst">
                     <p class="card-text">
                         @Model.Title
                     </p>

@@ -9,7 +9,9 @@
         @foreach (var report in Model)
         {
             <div class="card p-2 border-secondary">
-                <a><img src="/ReportImages/@report.ReportImage" class="card-img-top body-img-NavTab" title=" @report.ImageTitle" alt="@report.ReportImageAlt"></a>
+                <a asp-page="./Report" asp-route-id="@report.ReportId">
+                    <img src="/ReportImages/@report.ReportImage" class="card-img-top body-img-NavTab" title=" @report.ImageTitle" alt="@report.ReportImageAlt">
+                </a>
                 <div class="card-body">
                     <a class="text-decoration-none"><p class="card-title text-black body-card-NavTab"> @report.Title</p></a>
                     <p class="card-text" style="margin-bottom: 2rem;">

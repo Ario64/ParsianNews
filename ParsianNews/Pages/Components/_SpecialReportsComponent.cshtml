@@ -7,13 +7,13 @@
             <div class="card shadow w-100">
                 <div class="row g-0 ">
                     <div class="col-12 col-md-4">
-                        <a>
+                        <a asp-page="./Report" asp-route-id="@report.ReportId">
                             <img src="/ReportImages/@report.ReportImage" class="img-fluid rounded-start w-100" style="height: 112px;" alt="@report.ReportImageAlt" title="@report.ImageTitle">
                         </a>
                     </div>
                     <div class="card-body col-12 col-md-8 bg-body-secondary overflow-hidden py-3 p-md-1 body-card-plus">
                         <p>
-                            <a class="body-text-plus">
+                            <a asp-page="./Report" asp-route-id="@report.ReportId" class="body-text-plus">
                                 @report.Title
                             </a>
                         </p>

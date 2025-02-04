@@ -1,0 +1,32 @@
+﻿@page
+@model ParsianNews.Pages.Admin.Gallery.GalleryDetailsModel
+
+@{
+    ViewData["Title"] = "GalleryDetails";
+    Layout = "~/Pages/Shared/_AdminLayout.cshtml";
+}
+
+<h1>GalleryDetails</h1>
+
+<div>
+    <h4>Gallery</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gallery.GalleryName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gallery.GalleryName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Gallery.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Gallery.Description)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Gallery.GalleryId">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
