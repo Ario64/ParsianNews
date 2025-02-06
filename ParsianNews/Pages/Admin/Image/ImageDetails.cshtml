@@ -2,14 +2,13 @@
 @model ParsianNews.Pages.Admin.Image.ImageDetailsModel
 
 @{
-    ViewData["Title"] = "ImageDetails";
+    ViewData["Title"] = "جزییات تصویر";
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h1>ImageDetails</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div>
-    <h4>Image</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -33,6 +32,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Image.ImageId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./EditImage" asp-route-id="@Model.Image.ImageId">ویرایش</a> |
+    <a asp-page="./Index">انصراف</a>
 </div>

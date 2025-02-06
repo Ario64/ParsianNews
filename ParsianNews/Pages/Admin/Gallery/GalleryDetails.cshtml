@@ -2,14 +2,13 @@
 @model ParsianNews.Pages.Admin.Gallery.GalleryDetailsModel
 
 @{
-    ViewData["Title"] = "GalleryDetails";
+    ViewData["Title"] = "جزییات گالری";
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h1>GalleryDetails</h1>
+<h1>@ViewData["Title"]</h1>
 
 <div>
-    <h4>Gallery</h4>
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
@@ -27,6 +26,6 @@
     </dl>
 </div>
 <div>
-    <a asp-page="./Edit" asp-route-id="@Model.Gallery.GalleryId">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="./EditGallery" asp-route-id="@Model.Gallery.GalleryId">ویرایش</a> |
+    <a asp-page="./Index">بازگشت به لیست</a>
 </div>

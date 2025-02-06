@@ -13,10 +13,12 @@ namespace ParsianNews.Pages.Admin.Image
             _context = context;
         }
 
-        public IList<Models.Image> Image { get;set; } = default!;
+        public IList<Models.Image> Image { get; set; } = default!;
 
         public async Task OnGetAsync()
         {
+            ViewData["Galleries"] = await _context.Galleries.Select(s => s.GalleryName).ToListAsync();
+
             Image = await _context.Images
                 .Include(i => i.Gallery).ToListAsync();
         }

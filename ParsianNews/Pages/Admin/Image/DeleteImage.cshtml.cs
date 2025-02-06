@@ -24,7 +24,7 @@ namespace ParsianNews.Pages.Admin.Image
                 return NotFound();
             }
 
-            Image = (await _context.Images.FirstOrDefaultAsync(m => m.ImageId == id))!;
+            Image = (await _context.Images.Include(i=>i.Gallery).FirstOrDefaultAsync(m => m.ImageId == id))!;
 
             if (Image == null)
             {

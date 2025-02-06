@@ -2,21 +2,19 @@
 @model ParsianNews.Pages.Admin.Image.IndexModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "همه تصاویر";
     Layout = "~/Pages/Shared/_AdminLayout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>@ViewData["Title"]</h1>
 
 <p>
-    <a asp-page="Create">Create New</a>
+    <a asp-page="InsertImage" class="bt btn-sm btn-success">افزودن تصویر جدید</a>
 </p>
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Image[0].ImageName)
-            </th>
+            <th>تصویر</th>
             <th>
                 @Html.DisplayNameFor(model => model.Image[0].CreateDate)
             </th>
@@ -27,23 +25,30 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Image) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ImageName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreateDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gallery.Description)
-            </td>
-            <td>
-                    <a asp-page="./Edit" asp-route-id="@item.ImageId" class="fa fa-edit" style="color:darkorange; font-size:15px;" title="ویرایش"></a> |
-                    <a asp-page="./Details" asp-route-id="@item.ImageId" class="fa fa-info-circle" style="color:darkblue; font-size:15px;" title="جزییات"></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.ImageId" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.Image)
+        {
+            <tr>
+                <td>
+                    @foreach (var gallery in ViewBag.Galleries)
+                    {
+                        @if (item.Gallery!.GalleryName == gallery)
+                        {
+                            <img src="/ImageGallery/@gallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
+                        }
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gallery!.Description)
+                </td>
+                <td>
+                    <a asp-page="./EditImage" asp-route-id="@item.ImageId" class="fa fa-edit" style="color:darkorange; font-size:15px;" title="ویرایش"></a> |
+                    <a asp-page="./ImageDetails" asp-route-id="@item.ImageId" class="fa fa-info-circle" style="color:darkblue; font-size:15px;" title="جزییات"></a> |
+                    <a asp-page="./DeleteImage" asp-route-id="@item.ImageId" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

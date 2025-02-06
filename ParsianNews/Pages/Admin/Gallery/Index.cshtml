@@ -7,9 +7,9 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-
+<hr/>
 <p>
-    <a asp-page="CreateGallery">گالری جدید</a>
+    <a asp-page="CreateGallery" class="btn btn-sm btn-success">افزودن گالری جدید</a>
 </p>
 <table class="table">
     <thead>
@@ -34,9 +34,9 @@
                     @Html.DisplayFor(modelItem => item.Description)
                 </td>
                 <td>
-                    <a asp-page="./Edit" asp-route-id="@item.GalleryId" class="fa fa-edit" style="color:darkorange; font-size:15px;" title="ویرایش"></a> |
-                    <a asp-page="./Details" asp-route-id="@item.GalleryId" class="fa fa-info-circle" style="color:darkblue; font-size:15px;" title="جزییات"></a> |
-                    <a asp-page="./Delete" asp-route-id="@item.GalleryId" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
+                    <a asp-page="./EditGallery" asp-route-id="@item.GalleryId" class="fa fa-edit" style="color:darkorange; font-size:15px;" title="ویرایش"></a> |
+                    <a asp-page="./GalleryDetails" asp-route-id="@item.GalleryId" class="fa fa-info-circle" style="color:darkblue; font-size:15px;" title="جزییات"></a> |
+                    <a asp-page="./DeleteGallery" asp-route-id="@item.GalleryId" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
                 </td>
             </tr>
         }
