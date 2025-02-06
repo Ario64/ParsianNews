@@ -7,10 +7,20 @@
 }
 
 <h1>@ViewData["Title"]</h1>
+<hr/>
+@if (ViewBag.CurrentGallery == null)
+{
+    <p>
+        <a asp-page="InsertImage" class="bt btn-sm btn-success">افزودن تصویر جدید</a>
+    </p>
+}
+else
+{
+    <p>
+        <a asp-page="../Gallery/Index" class="bt btn-sm btn-default"><i class="fa fa-list" style="font-size:14px;color:red;"></i> بازگشت به گالری ها</a>
+    </p>
+}
 
-<p>
-    <a asp-page="InsertImage" class="bt btn-sm btn-success">افزودن تصویر جدید</a>
-</p>
 <table class="table">
     <thead>
         <tr>
@@ -29,12 +39,19 @@
         {
             <tr>
                 <td>
-                    @foreach (var gallery in ViewBag.Galleries)
+                    @if (ViewBag.CurrentGallery == null)
                     {
-                        @if (item.Gallery!.GalleryName == gallery)
+                        @foreach (var gallery in ViewBag.Galleries)
                         {
-                            <img src="/ImageGallery/@gallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
+                            @if (item.Gallery!.GalleryName == gallery)
+                            {
+                                <img src="/ImageGallery/@gallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
+                            }
                         }
+                    }
+                    else
+                    {
+                        <img src="/ImageGallery/@ViewBag.CurrentGallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
                     }
                 </td>
                 <td>

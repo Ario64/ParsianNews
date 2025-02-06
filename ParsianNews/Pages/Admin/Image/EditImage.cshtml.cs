@@ -36,13 +36,31 @@ namespace ParsianNews.Pages.Admin.Image
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(IFormFile? imageUp, int? galleryId)
         {
             if (!ModelState.IsValid)
             {
+                ViewData["GalleryId"] = new SelectList(_context.Galleries, "GalleryId", "Description");
                 return Page();
             }
 
+            if (imageUp != null)
+            {
+                var galleryName = _context.Galleries.Where(w => w.GalleryId == galleryId).Select(s => s.GalleryName)
+                    .FirstOrDefaultAsync();
+                string imgPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/GalleryImage/{galleryName}/", Image.ImageName!);
+                if (Directory.Exists(imgPath))
+                {
+                    Directory.Delete(imgPath);
+                }
+
+                Image.ImageName = Guid.NewGuid() + Path.GetExtension(imageUp.FileName);
+                string savePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/GalleryImage/{galleryName}/", Image.ImageName!);
+                using (var stream = new FileStream(savePath, FileMode.Create))
+                {
+                     await imageUp.CopyToAsync(stream);
+                }
+            }
             _context.Attach(Image).State = EntityState.Modified;
 
             try

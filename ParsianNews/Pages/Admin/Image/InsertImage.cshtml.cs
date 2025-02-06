@@ -25,7 +25,7 @@ namespace ParsianNews.Pages.Admin.Image
         public Models.Image Image { get; set; } = default!;
 
         // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(IFormFile? imageUp, int galleryId)
+        public async Task<IActionResult> OnPostAsync(List<IFormFile>? files, int galleryId)
         {
             if (!ModelState.IsValid)
             {
@@ -33,38 +33,40 @@ namespace ParsianNews.Pages.Admin.Image
                 return Page();
             }
 
-            if (imageUp != null)
+            if (files != null)
             {
                 var galleryName = await _context.Galleries
                     .Where(w => w.GalleryId == galleryId)
                     .Select(s => s.GalleryName)
                     .FirstOrDefaultAsync();
 
-                string imgPath = $"wwwroot/ImageGallery/{galleryName}/";
+                string imgPath = "wwwroot/ImageGallery/" + galleryName + "/";
                 if (!Directory.Exists(imgPath))
                 {
                     Directory.CreateDirectory(imgPath);
                 }
 
-                string imgName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(imageUp.FileName);
-                string saveImgPath = Path.Combine(Directory.GetCurrentDirectory(),imgPath ,imgName);
-                using (var stream = new FileStream(saveImgPath, FileMode.Create))
+                foreach (var file in files)
                 {
-                    await imageUp.CopyToAsync(stream);
+                    if (file.Length > 0)
+                    {
+                        string imgName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), imgPath, imgName);
+                        using (var fileStream = new FileStream(filePath, FileMode.Create))
+                        {
+                            await file.CopyToAsync(fileStream);
+                        }
+                        Image = new Models.Image()
+                        {
+                            ImageName = imgName,
+                            CreateDate = DateTime.Now,
+                            GalleryId = galleryId,
+                        };
+                    }
+                    _context.Images.Add(Image);
                 }
-
-                Image = new Models.Image()
-                {
-                    ImageName = imgName,
-                    CreateDate = DateTime.Now,
-                    GalleryId = galleryId,
-                };
             }
-
-
-            _context.Images.Add(Image);
             await _context.SaveChangesAsync();
-
             return RedirectToPage("./Index");
         }
     }

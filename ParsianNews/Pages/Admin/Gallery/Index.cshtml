@@ -7,7 +7,7 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<hr/>
+<hr />
 <p>
     <a asp-page="CreateGallery" class="btn btn-sm btn-success">افزودن گالری جدید</a>
 </p>
@@ -28,7 +28,7 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.GalleryName)
+                    <a asp-page="../Image/Index" asp-route-galleryName="@item.GalleryName" asp-page-handler="Gallery">@Html.DisplayFor(modelItem => item.GalleryName)</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Description)

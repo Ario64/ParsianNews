@@ -15,12 +15,22 @@ namespace ParsianNews.Pages.Admin.Image
 
         public IList<Models.Image> Image { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(int? id)
         {
             ViewData["Galleries"] = await _context.Galleries.Select(s => s.GalleryName).ToListAsync();
 
+            Image = await _context.Images.Include(i => i.Gallery).ToListAsync();
+        }
+
+        public async Task OnGetGallery(string galleryName)
+        {
+            ViewData["CurrentGallery"] = galleryName;
+
             Image = await _context.Images
-                .Include(i => i.Gallery).ToListAsync();
+                .Include(i => i.Gallery)
+                .Where(w => w.Gallery!.GalleryName == galleryName)
+                .OrderByDescending(o=>o.CreateDate)
+                .ToListAsync();
         }
     }
 }
