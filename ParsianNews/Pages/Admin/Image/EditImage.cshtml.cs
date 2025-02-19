@@ -15,8 +15,7 @@ namespace ParsianNews.Pages.Admin.Image
             _context = context;
         }
 
-        [BindProperty]
-        public Models.Image Image { get; set; } = default!;
+        [BindProperty] public Models.Image Image { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -25,66 +24,56 @@ namespace ParsianNews.Pages.Admin.Image
                 return NotFound();
             }
 
-            Image = (await _context.Images.FirstOrDefaultAsync(m => m.ImageId == id))!;
-            if (Image == null)
-            {
-                return NotFound();
-            }
-            ViewData["GalleryId"] = new SelectList(_context.Galleries, "GalleryId", "Description");
+            Image = (await _context.Images.Include(i => i.Gallery).FirstOrDefaultAsync(m => m.ImageId == id))!;
+            ViewData["GalleryId"] = new SelectList(_context.Galleries, "GalleryId", "GalleryName");
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more information, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync(IFormFile? imageUp, int? galleryId)
+
+        public async Task<IActionResult> OnPostAsync(IFormFile? imageUp, int? id)
         {
             if (!ModelState.IsValid)
             {
-                ViewData["GalleryId"] = new SelectList(_context.Galleries, "GalleryId", "Description");
+                ViewData["GalleryId"] = new SelectList(_context.Galleries, "GalleryId", "GalleryName");
+                return Page();
+            }
+
+            var galleryName = await _context.Images
+                .Include(i => i.Gallery)
+                .Where(w => w.ImageId == id)
+                .Select(s => s.Gallery!.GalleryName)
+                .SingleOrDefaultAsync();
+
+            if (galleryName == null)
+            {
+                // Handle the case where galleryName is null
+                ModelState.AddModelError(string.Empty, "Gallery not found.");
                 return Page();
             }
 
             if (imageUp != null)
             {
-                var galleryName = _context.Galleries.Where(w => w.GalleryId == galleryId).Select(s => s.GalleryName)
-                    .FirstOrDefaultAsync();
-                string imgPath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/GalleryImage/{galleryName}/", Image.ImageName!);
-                if (Directory.Exists(imgPath))
+                string deletePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/Img/GalleryImages/{galleryName}/", Image.ImageName!);
+                if (System.IO.File.Exists(deletePath))
                 {
-                    Directory.Delete(imgPath);
+                    System.IO.File.Delete(deletePath);
                 }
 
-                Image.ImageName = Guid.NewGuid() + Path.GetExtension(imageUp.FileName);
-                string savePath = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/GalleryImage/{galleryName}/", Image.ImageName!);
-                using (var stream = new FileStream(savePath, FileMode.Create))
-                {
-                     await imageUp.CopyToAsync(stream);
-                }
+                string saveDir = Path.Combine(Directory.GetCurrentDirectory(), $"wwwroot/Img/GalleryImages/{galleryName}/");
+                if (!Directory.Exists(saveDir))
+                    Directory.CreateDirectory(saveDir);
+
+                Image.ImageName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(imageUp.FileName);
+                string savePath = Path.Combine(saveDir, Image.ImageName);
+                using (var fileStream = new FileStream(savePath, FileMode.Create))
+                    await imageUp.CopyToAsync(fileStream);
             }
+
             _context.Attach(Image).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ImageExists(Image.ImageId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
+            await _context.SaveChangesAsync(); // Don't forget to save the changes
             return RedirectToPage("./Index");
         }
 
-        private bool ImageExists(int id)
-        {
-            return _context.Images.Any(e => e.ImageId == id);
-        }
     }
 }
+

@@ -13,9 +13,9 @@ namespace ParsianNews.Pages.Admin.Gallery
             _context = context;
         }
 
-        public IList<Models.Gallery> Gallery { get;set; } = default!;
+        public IList<Models.Gallery> Gallery { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public async Task OnGetAsync(string? galleryName)
         {
             Gallery = await _context.Galleries.ToListAsync();
         }

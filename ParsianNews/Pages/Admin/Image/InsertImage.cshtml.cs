@@ -24,7 +24,6 @@ namespace ParsianNews.Pages.Admin.Image
         [BindProperty]
         public Models.Image Image { get; set; } = default!;
 
-        // For more information, see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync(List<IFormFile>? files, int galleryId)
         {
             if (!ModelState.IsValid)
@@ -40,10 +39,10 @@ namespace ParsianNews.Pages.Admin.Image
                     .Select(s => s.GalleryName)
                     .FirstOrDefaultAsync();
 
-                string imgPath = "wwwroot/ImageGallery/" + galleryName + "/";
-                if (!Directory.Exists(imgPath))
+                string saveDir = $"wwwroot/Img/GalleryImages/{galleryName}/";
+                if (!Directory.Exists(saveDir))
                 {
-                    Directory.CreateDirectory(imgPath);
+                    Directory.CreateDirectory(saveDir);
                 }
 
                 foreach (var file in files)
@@ -51,7 +50,7 @@ namespace ParsianNews.Pages.Admin.Image
                     if (file.Length > 0)
                     {
                         string imgName = Guid.NewGuid().ToString().Replace("-", "") + Path.GetExtension(file.FileName);
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), imgPath, imgName);
+                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), saveDir, imgName);
                         using (var fileStream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(fileStream);

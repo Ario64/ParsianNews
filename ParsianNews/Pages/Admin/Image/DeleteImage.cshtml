@@ -21,7 +21,7 @@
         </thead>
         <tbody>
             <tr>
-                <td><img src="/ImageGallery/@Model.Image.ImageName" style="max-width:250px;" /></td>
+                <td><img src="/ImageGallery/@Model.Image.Gallery!.GalleryName/@Model.Image.ImageName" style="max-width:250px;" /></td>
                 <td>@Html.DisplayFor(model => model.Image.CreateDate)</td>
                 <td> @Html.DisplayFor(model => model.Image.Gallery!.GalleryName)</td>
             </tr>

@@ -14,7 +14,7 @@ namespace ParsianNews.Pages.Admin.Hashtag
         }
 
         [BindProperty] 
-        public Models.Hashtag Hashtag { get; set; }
+        public Models.Hashtag Hashtag { get; set; } = null!;
 
         public void OnGet(int id)
         {

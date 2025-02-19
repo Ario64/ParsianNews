@@ -24,7 +24,7 @@ namespace ParsianNews.Pages.Admin.Image
                 return NotFound();
             }
 
-            Image = (await _context.Images.Include(i=>i.Gallery).FirstOrDefaultAsync(m => m.ImageId == id))!;
+            Image = (await _context.Images.Include(i => i.Gallery).FirstOrDefaultAsync(m => m.ImageId == id))!;
 
             if (Image == null)
             {
@@ -39,15 +39,11 @@ namespace ParsianNews.Pages.Admin.Image
             {
                 return NotFound();
             }
-
-            Image = (await _context.Images.FindAsync(Image.ImageId))!;
-            if (Image != null)
-            {
-                _context.Images.Remove(Image);
-                await _context.SaveChangesAsync();
-            }
+            _context.Images.Remove(Image);
+            await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
+
     }
 }

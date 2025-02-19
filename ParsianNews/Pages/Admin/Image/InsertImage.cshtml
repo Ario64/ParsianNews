@@ -11,10 +11,13 @@
 <div class="row">
     <div class="col-md-4">
         <form method="post" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Image.GalleryId" class="control-label"></label>
-                <select asp-for="Image.GalleryId" class="form-control" name="galleryId" asp-items="ViewBag.GalleryId" style="padding:3px;"></select>
+                <select asp-for="Image.GalleryId" class="form-control" name="galleryId" asp-items="ViewBag.GalleryId" style="padding:3px;">
+                    <option >-انتخاب کنید-</option>
+                </select>
+                <span asp-validation-for="Image.Gallery!.GalleryName" class="text text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image.ImageName" class="control-label"></label>

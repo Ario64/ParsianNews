@@ -7,7 +7,7 @@
 }
 
 <h1>@ViewData["Title"]</h1>
-<hr/>
+<hr />
 @if (ViewBag.CurrentGallery == null)
 {
     <p>
@@ -26,44 +26,43 @@ else
         <tr>
             <th>تصویر</th>
             <th>
-                @Html.DisplayNameFor(model => model.Image[0].CreateDate)
+                @Html.DisplayNameFor(model => model.Images[0].CreateDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Image[0].Gallery)
+                @Html.DisplayNameFor(model => model.Images[0].Gallery)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Image)
+        @foreach (var item in Model.Images)
         {
             <tr>
                 <td>
-                    @if (ViewBag.CurrentGallery == null)
+                    @if (string.IsNullOrEmpty(ViewBag.CurrentGallery))
                     {
                         @foreach (var gallery in ViewBag.Galleries)
                         {
                             @if (item.Gallery!.GalleryName == gallery)
                             {
-                                <img src="/ImageGallery/@gallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
+                                <img src="/Img/GalleryImages/@gallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
                             }
                         }
                     }
                     else
                     {
-                        <img src="/ImageGallery/@ViewBag.CurrentGallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
+                        <img src="/Img/GalleryImages/@ViewBag.CurrentGallery/@item.ImageName" style="max-width:80px; max-height:80px;" class="img-thumbnail" />
                     }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CreateDate)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Gallery!.Description)
+                    @Html.DisplayFor(modelItem => item.Gallery!.GalleryName)
                 </td>
                 <td>
                     <a asp-page="./EditImage" asp-route-id="@item.ImageId" class="fa fa-edit" style="color:darkorange; font-size:15px;" title="ویرایش"></a> |
-                    <a asp-page="./ImageDetails" asp-route-id="@item.ImageId" class="fa fa-info-circle" style="color:darkblue; font-size:15px;" title="جزییات"></a> |
-                    <a asp-page="./DeleteImage" asp-route-id="@item.ImageId" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
+                    <a asp-page-handler="Delete" asp-route-id="@item.ImageId" asp-route-returnUrl="@ViewBag.CurrentGallery" class="fa fa-trash" style="color:red; font-size:15px;" title="حذف"></a>
                 </td>
             </tr>
         }

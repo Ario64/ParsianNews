@@ -14,7 +14,7 @@ namespace ParsianNews.Components
             _context = context;
         }
 
-        public IEnumerable<Hashtag> Hashtags { get; set; }
+        public IEnumerable<Hashtag> Hashtags { get; set; } = null!;
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
