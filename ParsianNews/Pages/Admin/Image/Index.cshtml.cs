@@ -17,10 +17,17 @@ namespace ParsianNews.Pages.Admin.Image
 
         public IList<Models.Image> Images { get; set; } = default!;
 
-        public async Task OnGetAsync(int? id)
+        public async Task<IActionResult> OnGetAsync(string? returnUrl)
         {
             ViewData["Galleries"] = await _context.Galleries.Select(s => s.GalleryName).ToListAsync();
             Images = await _context.Images.Include(i => i.Gallery).ToListAsync();
+
+            if (!string.IsNullOrEmpty(returnUrl))
+            {
+                var encodedGalleryName = WebUtility.UrlEncode(returnUrl);
+                return LocalRedirect($"~/Admin/Image?galleryName={encodedGalleryName}&handler=Gallery");
+            }
+            return Page();
         }
 
         public async Task OnGetGallery(string galleryName)
@@ -69,7 +76,7 @@ namespace ParsianNews.Pages.Admin.Image
                 var encodedGalleryName = WebUtility.UrlEncode(returnUrl);
                 return LocalRedirect($"~/Admin/Image?galleryName={encodedGalleryName}&handler=Gallery");
             }
-            return RedirectToPage("./Index");
+            return Page();
         }
     }
 }
